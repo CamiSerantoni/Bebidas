@@ -1,10 +1,23 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useAppStore } from "../stores/useAppStore";
 
 export default function Header() {
   const { pathname } = useLocation();
 
   const isHome = useMemo(() => pathname === "/", [pathname]);
+
+
+  const fetchCategories =  useAppStore((state) => state.fetchCategories )
+
+
+
+useEffect(()=> {
+  fetchCategories();
+},[])
+
+
+
   /* Si queremos resaltar pagina actual usamos navLink sino solo link */
 
   return (
