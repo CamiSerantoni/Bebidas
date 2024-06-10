@@ -9,7 +9,8 @@ export default function Header() {
 
 
   const fetchCategories =  useAppStore((state) => state.fetchCategories )
-
+  const categories =  useAppStore((state) => state.categories )
+  console.log(categories, 'DESDE HEADER')
 
 
 useEffect(()=> {
