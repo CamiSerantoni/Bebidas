@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAppStore } from "../stores/useAppStore";
+import { Categories } from "../types";
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -81,11 +82,18 @@ useEffect(()=> {
               </label>
               <select
                 id="ingredient"
-                
                 name="ingredient"
                 className="p-3 w-full rounded-lg focus:outline-none"
-                // placeholder="Nombre o ingrediente. Ej. Vodka, Tequila, Café"
-              >  <option value="">--Seleccione--</option></select>
+                placeholder="Nombre o ingrediente. Ej. Vodka, Tequila, Café"
+              >  <option value="">--Seleccione--</option>
+              
+              {categories.drinks.map((category) => (
+                <option key={category.strCategory} value={category.strCategory}>
+                  {category.strCategory}
+                </option>
+              ))}
+              
+              </select>
             </div>
             <input 
             type="submit"
