@@ -32,8 +32,18 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeE
 }
 
 
-  /* Si queremos resaltar pagina actual usamos navLink sino solo link */
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  console.log(searchFilters);
 
+  if (Object.values(searchFilters).includes('')) {
+    console.log('Todos los campos son obligatorios');
+    return
+  }
+  // Aquí puedes realizar la solicitud con la API o realizar otras acciones con los filtros 
+
+  /* Si queremos resaltar pagina actual usamos navLink sino solo link */
+}
   return (
     <header className={isHome ? 'bg-header bg-center bg-cover ': "bg-slate-800"}>
       <div className="mx-auto container px-5 py-16">
@@ -67,7 +77,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeE
           </nav>
         </div>
         {isHome && (
-          <form  className="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6 "  action="">
+          <form  className="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6 "  onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="ingredient"
