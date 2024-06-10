@@ -1,9 +1,15 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAppStore } from "../stores/useAppStore";
-import { Categories } from "../types";
+
 
 export default function Header() {
+
+const [searchFilters , setSearchFilters] = useState({
+  ingredient: '',
+  category: ''
+
+})
   const { pathname } = useLocation();
 
   const isHome = useMemo(() => pathname === "/", [pathname]);
@@ -18,6 +24,12 @@ useEffect(()=> {
   fetchCategories();
 },[])
 
+const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+  setSearchFilters({
+    ...searchFilters,
+    [event.target.name]: event.target.value
+  })
+}
 
 
   /* Si queremos resaltar pagina actual usamos navLink sino solo link */
@@ -70,21 +82,24 @@ useEffect(()=> {
                 name="ingredient"
                 className="p-3 w-full rounded-lg focus:outline-none"
                 placeholder="Nombre o ingrediente. Ej. Vodka, Tequila, Café"
+                onChange={handleChange}
+                value={searchFilters.ingredient}
               />
             </div>
             <div>
               <label
-                htmlFor="ingredient"
+                htmlFor="category"
                 className="block text-white uppercase font-extrabold text-lg"
               >
                 {" "}
                 Nombre o ingrediente
               </label>
               <select
-                id="ingredient"
-                name="ingredient"
+                id="category"
+                name="category"
                 className="p-3 w-full rounded-lg focus:outline-none"
-                placeholder="Nombre o ingrediente. Ej. Vodka, Tequila, Café"
+                onChange={handleChange}
+                value={searchFilters.ingredient}
               >  <option value="">--Seleccione--</option>
               
               {categories.drinks.map((category) => (
