@@ -17,6 +17,7 @@ const [searchFilters , setSearchFilters] = useState({
 
   const fetchCategories =  useAppStore((state) => state.fetchCategories )
   const categories =  useAppStore((state) => state.categories )
+  const searchRecipes =  useAppStore((state) => state.searchRecipes )
   console.log(categories, 'DESDE HEADER')
 
 
@@ -36,11 +37,18 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
   event.preventDefault();
   console.log(searchFilters);
 
+  //TODO: PONER VALIDACIONES
   if (Object.values(searchFilters).includes('')) {
     console.log('Todos los campos son obligatorios');
     return
   }
+  searchRecipes();
   // Aquí puedes realizar la solicitud con la API o realizar otras acciones con los filtros 
+
+
+
+
+
 
   /* Si queremos resaltar pagina actual usamos navLink sino solo link */
 }

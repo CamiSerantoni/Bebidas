@@ -21,5 +21,9 @@ export const createRecipesSlice: StateCreator<RecipesSliceType> = (set) => ({
             categories
         })
     },
+    searchRecipes: async () => {
+        console.log(' DESDE SLICE')
+    }
+
 
 });
