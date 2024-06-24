@@ -42,7 +42,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     console.log('Todos los campos son obligatorios');
     return
   }
-  searchRecipes();
+  searchRecipes(searchFilters);
   // Aquí puedes realizar la solicitud con la API o realizar otras acciones con los filtros 
 
 
@@ -117,7 +117,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                 name="category"
                 className="p-3 w-full rounded-lg focus:outline-none"
                 onChange={handleChange}
-                value={searchFilters.ingredient}
+                value={searchFilters.category}
               >  <option value="">--Seleccione--</option>
               
               {categories.drinks.map((category) => (
