@@ -12,9 +12,7 @@ export const createFavoritesSlice: StateCreator<FavoritesSliceType> = (
 ) => ({
   favorites: [],
   handleClickFavorite: (recipe) => {
-    if (
-      get().favorites.some((favorite) => favorite.idDrink === recipe.idDrink)
-    ) {
+    if (get().favoriteExists(recipe.idDrink)) {
       set((state) => ({
         favorites: state.favorites.filter((f) => f.idDrink !== recipe.idDrink),
       }))
@@ -28,6 +26,9 @@ export const createFavoritesSlice: StateCreator<FavoritesSliceType> = (
     
     }
   },
+  favoriteExists: (id) => {
+    return  get().favorites.some((favorite) => favorite.idDrink === id)
+  }
 
   //   addFavorite: (recipe: Recipe) => set((state) => ({ favorites: [...state.favorites, recipe] })),
   //   removeFavorite: (recipe: Recipe) => set((state) => ({ favorites: state.favorites.filter((f) => f.idDrink !== recipe.idDrink) })),
