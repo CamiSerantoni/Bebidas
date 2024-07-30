@@ -1,14 +1,16 @@
+import { FavoritesSliceType } from './favoritesSlice';
 import { StateCreator } from "zustand";
 import { Recipe } from "../types";
+import { createRecipesSlice, RecipesSliceType } from "./recipeSlice";
 
 export type FavoritesSliceType = {
   favorites: Recipe[];
   handleClickFavorite: (recipe: Recipe) => void;
 };
 
-export const createFavoritesSlice: StateCreator<FavoritesSliceType> = (
+export const createFavoritesSlice: StateCreator<FavoritesSliceType & RecipesSliceType, [], [], FavoritesSliceType > = (
   set,
-  get
+  get, api
 ) => ({
   favorites: [],
   handleClickFavorite: (recipe) => {
@@ -25,6 +27,7 @@ export const createFavoritesSlice: StateCreator<FavoritesSliceType> = (
     
     
     }
+    createRecipesSlice(set, get, api).closeModal()
   },
   favoriteExists: (id) => {
     return  get().favorites.some((favorite) => favorite.idDrink === id)
