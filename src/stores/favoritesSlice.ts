@@ -1,4 +1,4 @@
-import { FavoritesSliceType } from './favoritesSlice';
+
 import { StateCreator } from "zustand";
 import { Recipe } from "../types";
 import { createRecipesSlice, RecipesSliceType } from "./recipeSlice";
