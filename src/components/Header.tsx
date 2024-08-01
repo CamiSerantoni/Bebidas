@@ -18,7 +18,7 @@ const [searchFilters , setSearchFilters] = useState({
   const fetchCategories =  useAppStore((state) => state.fetchCategories )
   const categories =  useAppStore((state) => state.categories )
   const searchRecipes =  useAppStore((state) => state.searchRecipes )
-  console.log(categories, 'DESDE HEADER')
+
 
 
 useEffect(()=> {
@@ -39,7 +39,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
   //TODO: PONER VALIDACIONES
   if (Object.values(searchFilters).includes('')) {
-    console.log('Todos los campos son obligatorios');
+    // console.log('Todos los campos son obligatorios');
     return
   }
   searchRecipes(searchFilters);
