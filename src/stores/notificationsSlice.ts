@@ -18,9 +18,9 @@ export const createNotificationsSlice: StateCreator<NotificationSliceType> = (
 ) => ({
 
 notification: { 
-    text: '',
+    text: 'notificacion heeeeee',
     error: false,
-    show: false
+    show: true
 }
 
 });
