@@ -12,6 +12,7 @@ type Notification = {
 export type NotificationSliceType = {
 notification: Notification
 showNotification: (payload: Pick<Notification, 'text' | 'error'>) => void
+hideNotification: () => void
 };
 
 
@@ -32,6 +33,15 @@ showNotification: (payload) => {
              show: true
             }
         })
+}, 
+hideNotification: () =>  {
+set({
+    notification: { 
+        text: '',
+        error: false,
+        show: false
+    }, 
+})
 }
 
 });
