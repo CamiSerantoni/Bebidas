@@ -17,7 +17,7 @@ hideNotification: () => void
 
 
 export const createNotificationsSlice: StateCreator<NotificationSliceType & FavoritesSliceType, [],[], NotificationSliceType > = (
-  set
+  set,get 
 ) => ({
 
 notification: { 
@@ -33,6 +33,9 @@ showNotification: (payload) => {
              show: true
             }
         })
+        setTimeout(() => {    
+    get().hideNotification()
+}, 5000)
 }, 
 hideNotification: () =>  {
 set({
@@ -42,8 +45,9 @@ set({
         show: false
     }, 
 })
-}
 
-});
+
+}
+})
 
 //El dividir los slices  se le conoce como el patrón:  "Slice pattern" permite tener codigo más organizado
