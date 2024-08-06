@@ -32,3 +32,5 @@ const hasFavorites = useMemo(() => favorites.length, [favorites])
 </>
   )
 }
+
+export default FavoritesPage
